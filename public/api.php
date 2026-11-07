@@ -2,9 +2,11 @@
 declare(strict_types=1);
 header('Content-Type: application/json; charset=utf-8');
 
-$config = file_exists(__DIR__ . '/../config.php')
-    ? require __DIR__ . '/../config.php'
-    : require __DIR__ . '/../config.example.php';
+$configFile = array_values(array_filter(
+    [__DIR__ . '/config.php', __DIR__ . '/../config.php', __DIR__ . '/../config.example.php'],
+    'file_exists'
+))[0];
+$config = require $configFile;
 
 function fail(string $msg, int $code = 400): never {
     http_response_code($code);
