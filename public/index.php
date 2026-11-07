@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Spritpreise in der Nähe</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -28,9 +29,11 @@
     <button type="submit" class="primary">Tankstellen suchen</button>
   </form>
   <p id="status" role="status"></p>
+  <div id="map" hidden></div>
   <ul id="results"></ul>
-  <footer>Daten: <a href="https://creativecommons.tankerkoenig.de/">Tankerkönig</a> (CC BY 4.0), Geocoding: OpenStreetMap/Nominatim</footer>
+  <footer>Daten: <a href="https://creativecommons.tankerkoenig.de/">Tankerkönig</a> (CC BY 4.0), Geocoding &amp; Karte: © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>-Mitwirkende</footer>
 </main>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="app.js"></script>
 </body>
 </html>

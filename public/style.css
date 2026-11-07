@@ -20,3 +20,9 @@ li:first-child .price{color:#0a8a3a}
 .closed{color:#b00020}.open{color:#0a8a3a}
 .demo{background:#fff3cd;padding:8px;border-radius:8px;margin-bottom:8px;font-size:.85rem}
 footer{margin-top:20px;font-size:.75rem;color:#667}
+#map{height:320px;border-radius:12px;margin:8px 0;box-shadow:0 1px 4px #0002}
+#map[hidden]{display:none}
+li{cursor:pointer}
+.pin{background:#0b6bcb;color:#fff;font-weight:700;font-size:12px;padding:2px 6px;border-radius:10px;border:2px solid #fff;box-shadow:0 1px 4px #0006;white-space:nowrap;text-align:center}
+.pin.best{background:#0a8a3a}
+.pin.me{background:#d33;width:14px;height:14px;padding:0;border-radius:50%}

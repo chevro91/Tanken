@@ -9,6 +9,28 @@ async function api(params) {
   return d;
 }
 
+let map, layer;
+function showMap(lat, lng, stations) {
+  $('map').hidden = false;
+  if (!map) {
+    map = L.map('map');
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '© OpenStreetMap' }).addTo(map);
+    layer = L.layerGroup().addTo(map);
+  }
+  layer.clearLayers();
+  const pts = [[lat, lng]];
+  L.marker([lat, lng], { icon: L.divIcon({ className: '', html: '<div class="pin me"></div>', iconSize: [14, 14] }) }).addTo(layer);
+  const markers = stations.map((s, i) => {
+    pts.push([s.lat, s.lng]);
+    const m = L.marker([s.lat, s.lng], { icon: L.divIcon({ className: '', html: `<div class="pin${i ? '' : ' best'}">${s.price.toFixed(2)}</div>`, iconSize: [46, 22], iconAnchor: [23, 11] }) })
+      .bindPopup(`<b>${esc(s.brand || s.name)}</b><br>${esc(s.street)} ${esc(s.houseNumber)}<br>${s.price.toFixed(3)} €`).addTo(layer);
+    return m;
+  });
+  map.invalidateSize();
+  map.fitBounds(pts, { padding: [30, 30], maxZoom: 15 });
+  return markers;
+}
+
 async function search(lat, lng) {
   status('Suche Tankstellen …');
   $('results').innerHTML = '';
@@ -24,6 +46,13 @@ async function search(lat, lng) {
         <div class="meta">${s.dist} km · <span class="${s.isOpen ? 'open' : 'closed'}">${s.isOpen ? 'geöffnet' : 'geschlossen'}</span> · <a href="${map}" target="_blank" rel="noopener">Route</a></div></div>
         <div class="price">${p.slice(0, -1)}<sup>${p.slice(-1)}</sup> €</div></li>`;
     }).join('');
+    const markers = showMap(lat, lng, d.stations);
+    document.querySelectorAll('#results li').forEach((li, i) => li.addEventListener('click', ev => {
+      if (ev.target.closest('a')) return;
+      $('map').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      map.setView(markers[i].getLatLng(), 15);
+      markers[i].openPopup();
+    }));
   } catch (e) { status(e.message, true); }
 }
 
