@@ -10,3 +10,8 @@ php -S localhost:8080 -t public
 Ohne API-Key läuft die App im Demo-Modus mit Beispieldaten.
 
 Daten: Tankerkönig (CC BY 4.0); Geocoding: OpenStreetMap Nominatim.
+
+## Login & Favoriten
+Benutzer und Favoriten liegen in einer SQLite-Datei (`data/tanken.sqlite`, wird automatisch angelegt;
+der Ordner ist per `.htaccess` gesperrt). Nach Anlage deines Kontos kannst du in `config.php`
+`'allow_register' => false` setzen.

@@ -26,3 +26,10 @@ li{cursor:pointer}
 .pin{background:#0b6bcb;color:#fff;font-weight:700;font-size:12px;padding:2px 6px;border-radius:10px;border:2px solid #fff;box-shadow:0 1px 4px #0006;white-space:nowrap;text-align:center}
 .pin.best{background:#0a8a3a}
 .pin.me{background:#d33;width:14px;height:14px;padding:0;border-radius:50%}
+header{display:flex;justify-content:space-between;align-items:center;gap:8px}
+#auth{font-size:.9rem;display:flex;gap:8px;align-items:center}
+#loginform{margin-bottom:10px}
+#loginform .row button{flex:1}
+h2{font-size:1.1rem;margin:14px 0 6px}
+.star{background:none;border:0;font-size:1.4rem;padding:0 4px;color:#bbb}
+.star.on{color:#f5a300}

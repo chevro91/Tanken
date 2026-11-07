@@ -9,7 +9,21 @@
 </head>
 <body>
 <main>
-  <h1>⛽ Spritpreise in der Nähe</h1>
+  <header>
+    <h1>⛽ Spritpreise</h1>
+    <div id="auth"></div>
+  </header>
+  <form id="loginform" hidden>
+    <div class="row">
+      <input id="lu" placeholder="Benutzername" autocomplete="username" required>
+      <input id="lp" type="password" placeholder="Passwort (min. 8 Zeichen)" autocomplete="current-password" required>
+    </div>
+    <div class="row">
+      <button class="primary" type="submit" data-act="login">Anmelden</button>
+      <button type="submit" data-act="register" id="regbtn">Registrieren</button>
+    </div>
+  </form>
+  <section id="favsec" hidden><h2>⭐ Meine Favoriten</h2><ul id="favs"></ul></section>
   <form id="form">
     <div class="row">
       <input id="q" type="text" placeholder="Ort oder PLZ, z. B. 58095 Hagen" autocomplete="postal-code">
